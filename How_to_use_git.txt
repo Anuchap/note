@@ -1,0 +1,21 @@
+git init
+
+git add *
+
+git  commit -m "first commit"
+
+git status
+
+
+git config --global user.name "Anuchap"
+
+git config --global user.email "mr.izedtea@gmail.com"
+
+
+
+git remote add origin https://github.com/Anuchap/note.git
+
+
+git push origin master
+
+git pull oragin master
