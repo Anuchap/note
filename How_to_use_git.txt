@@ -19,3 +19,7 @@ git remote add origin https://github.com/Anuchap/note.git
 git push origin master
 
 git pull oragin master
+
+
+#to remove deleted
+git add -u
