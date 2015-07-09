@@ -23,3 +23,6 @@ git pull oragin master
 
 #to remove deleted
 git add -u
+
+#remember user and pass
+git config --global credential.helper "cache --timeout=3600"
