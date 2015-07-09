@@ -43,3 +43,20 @@ namespace WebUI.Helper
         }
     }
 }
+
+/*
+Example:
+
+JsonConvert.SerializeObject(YourPOCOHere, Formatting.Indented, 
+new JsonSerializerSettings { 
+        ReferenceLoopHandling = ReferenceLoopHandling.Serialize
+});
+Should you have to serialize an object that is nested indefinitely you can use PreserveObjectReferences to avoid a StackOverflowException.
+
+Example:
+
+JsonConvert.SerializeObject(YourPOCOHere, Formatting.Indented, 
+new JsonSerializerSettings { 
+        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+});
+Pick what makes sense for the object you are serializing.*/
