@@ -1,0 +1,44 @@
+Basically, you write a pipe which you can then use in the *ngFor directive.
+
+In your component:
+
+filterargs = {title: 'hello'};
+items = [{title: 'hello world'}, {title: 'hello kitty'}, {title: 'foo bar'}];
+In your template, you can pass string, number or object to your pipe to use to filter on:
+
+<li *ngFor="let item of items | myfilter:filterargs">
+In your pipe:
+
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+    name: 'myfilter',
+    pure: false
+})
+export class MyFilterPipe implements PipeTransform {
+    transform(items: any[], filter: Object): any {
+        if (!items || !filter) {
+            return items;
+        }
+        // filter items array, items which match and return true will be kept, false will be filtered out
+        return items.filter(item => item.title.indexOf(filter.title) !== -1);
+    }
+}
+Remember to register your pipe in app.module.ts, you no longer need to register the pipes in your @Component
+
+import { MyFilterPipe } from './shared/pipes/my-filter.pipe';
+
+@NgModule({
+    imports: [
+        ..
+    ],
+    declarations: [
+        MyFilterPipe,
+    ],
+    providers: [
+        ..
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }
+Added a Plunker which demos the use of a custom filter pipe and the built-in slice pipe to limit results. You can view and test the code here: https://embed.plnkr.co/l1oTNT/
